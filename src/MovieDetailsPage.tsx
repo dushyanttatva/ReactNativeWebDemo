@@ -47,11 +47,13 @@ const MovieDetailsPage = () => {
           <Text style={styles.sectionTitle}>Actors</Text>
           <Text style={styles.description}>{movie.Actors}</Text>
 
-          <Link to="/" style={styles.linkWrapper}>
-            <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
-              <Text style={styles.buttonText}>← Back to Movies</Text>
-            </Pressable>
-          </Link>
+          <View style={styles.linkWrapper}>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
+                <Text style={styles.buttonText}>← Back to Movies</Text>
+              </Pressable>
+            </Link>
+          </View>
         </View>
       </View>
     </ScrollView>

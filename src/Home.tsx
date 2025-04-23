@@ -82,14 +82,13 @@ function Home() {
           contentContainerStyle={styles.list}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
-            <Link to={`/movie/${item.imdbID}`}>
+            <Link to={`/movie/${item.imdbID}`} style={{ textDecoration: 'none' }}>
               <View
-                // onPress={() => openModal(item)}
                 style={[styles.card, { width: cardWidth }]}
               >
                 <Image source={{ uri: item.Poster }} style={styles.poster} />
                 <Text style={styles.title}>{item.Title}</Text>
-                <Text style={styles.year}>{item.Year} {item.imdbID}</Text>
+                <Text style={styles.year}>{item.Year}</Text>
               </View>
             </Link>
           )}
