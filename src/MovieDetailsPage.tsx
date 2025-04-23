@@ -20,7 +20,7 @@ const MovieDetailsPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setMovie(data);
-        if (typeof window !== "undefined" && typeof document !== "undefined") {
+        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
           document.title = data?.Title || 'Movie Details';
         }
       });

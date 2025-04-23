@@ -8,14 +8,14 @@ import {
   TextInput,
   useWindowDimensions,
   View,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import { Link } from 'react-router-dom';
 
 const API_KEY = 'b8ed02cb';
-const { width } = Dimensions.get('window');
+const rnDimensions = Dimensions.get('window');
 
-const posterWidth = width - 40;
+const posterWidth = rnDimensions.width - 40;
 const posterHeight = posterWidth * (2 / 3);
 
 type Movie = {
@@ -57,9 +57,9 @@ function Home() {
   }, [query]);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && typeof document !== "undefined") {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       if (query.trim().length > 0) {
-        document.title = movies.length === 0 ? 'No results found' : `Searching for "${query}"`;
+        document.title = movies.length === 0 ? 'No results found' : `Searching for '${query}'`;
       } else {
         document.title = 'Movie Finder';
       }
@@ -71,7 +71,7 @@ function Home() {
       <View style={styles.inner}>
         <Text style={styles.header}>🎬 Movie Finder</Text>
         <TextInput
-          placeholder="Search movies..."
+          placeholder={'Search movies...'}
           style={styles.input}
           value={query}
           onChangeText={setQuery}
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   inner: {
     paddingHorizontal: 16,
     flex: 1,
-    maxWidth: "100%",
+    maxWidth: '100%',
     alignSelf: 'center',
   },
   header: {
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 20,
     padding: 16,
-    paddingTop: Platform.OS == "web" ? 16 : 0,
+    paddingTop: Platform.OS === 'web' ? 16 : 0,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOpacity: 0.2,
@@ -165,9 +165,9 @@ const styles = StyleSheet.create({
     // transition: 'transform 0.2s ease-in-out',
   },
   poster: {
-    width: Platform.OS == "web" ? "100%" : posterWidth,
-    height: Platform.OS == "web" ? 320 : posterHeight,
-    resizeMode: Platform.OS == "web" ? "cover" : 'cover',
+    width: Platform.OS === 'web' ? '100%' : posterWidth,
+    height: Platform.OS === 'web' ? 320 : posterHeight,
+    resizeMode: Platform.OS === 'web' ? 'cover' : 'cover',
     borderRadius: 10,
     marginBottom: 14,
     // transition: 'transform 0.3s ease-in-out',
